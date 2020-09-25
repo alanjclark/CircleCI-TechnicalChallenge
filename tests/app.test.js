@@ -7,9 +7,10 @@ var assert = require('assert');
         await driver.get('http://localhost:8001');
         await driver.findElement(By.id('button')).click();
         var message = await driver.findElement(By.id('click')).getText();
-        assert.strictEqual(message, "Clickity click!")
+        assert.strictEqual(message, "Click click!")
     } catch {
-        console.log("Button click failed")    
+        console.log("Button click failed") 
+        process.exit(1);   
     } finally {
         await driver.quit();
     }
