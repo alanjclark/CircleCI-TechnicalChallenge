@@ -1,5 +1,7 @@
 var http = require('http');
 
+var port = process.env.PORT || 8001
+
 http.createServer(function (request, response) {
     response.writeHead(200, {'Content-Type': 'text/html'});   // Sets header info
     response.write('<div style="text-align: center;">');
@@ -7,4 +9,4 @@ http.createServer(function (request, response) {
     response.write('<button id="button" type="button" onClick="getElementById(\'click\').innerHTML = \'Clickity click!\'">CLICK THIS!</button>');
     response.write('<p id="click"></p>');
     response.end();
-}).listen(8001);
+}).listen(port);
