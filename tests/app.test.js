@@ -8,6 +8,8 @@ var assert = require('assert');
         await driver.findElement(By.id('button')).click();
         var message = await driver.findElement(By.id('click')).getText();
         assert.strictEqual(message, "Clicky click!")
+    } catch {
+        console.log("Button click failed")    
     } finally {
         await driver.quit();
     }
