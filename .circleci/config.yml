@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build_and_test:
     docker:
-      - image: circleci/node:lts-browsers # Latest LTS, rather than specifying version
+      - image: circleci/node:lts-browsers
     steps:
       - checkout
       - run: mkdir test-reports
