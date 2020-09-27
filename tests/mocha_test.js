@@ -9,7 +9,7 @@ describe('Web page', function(){
                 await driver.get('http://localhost:8001');
                 await driver.findElement(By.id('button')).click();
                 var message = await driver.findElement(By.id('click')).getText();
-                assert.strictEqual(message, "Clickity click!");
+                assert.strictEqual(message, "Clicky click!");
             } catch {
                 assert("Button click failed");
             } finally {
