@@ -1,25 +1,3 @@
-var assert = require('assert'),
-webdriver = require('selenium-webdriver');
-
-describe('Web page test appear on click', function() {
-    it('Text should appear', function() {
-        var driver = new webdriver.Builder().
-        withCapabilities(webdriver.Capabilities.chrome()).
-        build();
-        try {
-            driver.get('localhost:8001');
-            driver.findElement(By.id('button')).click();
-            var message = driver.findElement(By.id('click')).getText();
-            assert.equal(message, "Clickity click!");
-        } catch {
-            assert.fail("Button click failed - message did not appear.")
-        } finally {
-            driver.quit();
-        }
-    });
-});
-
-/* 
 const webdriver = require('selenium-webdriver');
 const { expect } = require('chai');
 
@@ -34,7 +12,7 @@ describe('Web page', function(){
     })
 });
 
-
+/* 
 var assert = require('assert');
 const {Builder, By, Key, until} = require('selenium-webdriver');
 
@@ -55,4 +33,25 @@ describe('Web page', function(){
         })();
     })
 })
+
+var assert = require('assert'),
+webdriver = require('selenium-webdriver');
+
+describe('Web page test appear on click', function() {
+    it('Text should appear', function() {
+        var driver = new webdriver.Builder().
+        withCapabilities(webdriver.Capabilities.chrome()).
+        build();
+        try {
+            driver.get('localhost:8001');
+            driver.findElement(By.id('button')).click();
+            var message = driver.findElement(By.id('click')).getText();
+            assert.equal(message, "Clickity click!");
+        } catch {
+            assert.fail("Button click failed - message did not appear.")
+        } finally {
+            driver.quit();
+        }
+    });
+});
 */
