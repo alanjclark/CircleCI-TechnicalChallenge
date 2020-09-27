@@ -2,14 +2,20 @@ const webdriver = require('selenium-webdriver');
 const { expect } = require('chai');
 
 describe('Web page', function(){
-    let driver = new webdriver.Builder().forBrowser('firefox').build();
+    var driver = new webdriver.Builder().forBrowser('firefox').build();
+    
+    // Set a timeout to prevent the test ending before the browser has started
+    this.timeout(10000);
 
-    it('should display text on button click', function(){
+    it('should display text on button click', async (done) => {
         await driver.get('http://localhost:8001');
         await driver.findElement(By.id('button')).click();
         var message = await driver.findElement(By.id('click')).getText();
         expect(message).to.equal('Clicky click!');
     })
+
+    // Quit selenium after the test has finished
+    after(async () => driver.quit());
 });
 
 /* 
