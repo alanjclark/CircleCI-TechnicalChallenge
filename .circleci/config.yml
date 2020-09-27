@@ -31,7 +31,7 @@ jobs:
       - store_artifacts:
           path: test-reports/
       - store_test_results:
-          path: ~/junit
+          path: ./junit
 
 workflows:
   build_test:
