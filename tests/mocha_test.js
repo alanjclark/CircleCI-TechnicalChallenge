@@ -1,7 +1,8 @@
 const {Builder, By, Key, until} = require('selenium-webdriver');
 const { expect } = require('chai');
+const fs = require('fs');
 
-describe('Web page', function(){
+describe('Web page', function() {
     var driver = new Builder().forBrowser('firefox').build();
     
     // Set a timeout to prevent the test ending before the browser has started
@@ -9,9 +10,12 @@ describe('Web page', function(){
 
     it('should display text on button click', async () => {
         await driver.get('http://localhost:8001');
+        let encodedString = driver.takeScreenshot();
+        fs.writeFileSync('./test-reports/before.png', encodedString, 'base64');
         await driver.findElement(By.id('button')).click();
         var message = await driver.findElement(By.id('click')).getText();
         expect(message).to.equal('Clicky click!');
+        fs.writeFileSync('./test-reports/after.png', encodedString, 'base64');
     })
 
     // Quit selenium after the test has finished
