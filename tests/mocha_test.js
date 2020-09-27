@@ -10,6 +10,13 @@ describe('Web page', function() {
 
     it('should display text on button click', async () => {
         await driver.get('http://localhost:8001');
+        await (await driver).takeScreenshot().then(
+            function(image, err) {
+                require('fs').writeFile('before.png', image, 'base64', function(err) {
+                    console.log(err);
+                });
+            }
+        );
         await driver.findElement(By.id('button')).click();
         var message = await driver.findElement(By.id('click')).getText();
         expect(message).to.equal('Clickity click!');
