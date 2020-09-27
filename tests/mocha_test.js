@@ -11,7 +11,7 @@ describe('Web page', function(){
                 var message = await driver.findElement(By.id('click')).getText();
                 assert.equal(message, "Clicky click!");
             } catch {
-                assert.fail("Button click failed");
+                assert.fail('Button click failed');
             } finally {
                 await driver.quit();
             }
