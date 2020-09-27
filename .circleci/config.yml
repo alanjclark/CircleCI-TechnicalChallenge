@@ -30,7 +30,7 @@ jobs:
       - store_artifacts:
           path: test-reports/
       - store_test_results:
-          path: test-reports/
+          path: test-results.xml
 
 workflows:
   build_test:
