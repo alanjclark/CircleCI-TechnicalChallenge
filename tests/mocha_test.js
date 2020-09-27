@@ -5,11 +5,13 @@ const fs = require('fs');
 describe('Web page', function() {
     var driver = new Builder().forBrowser('firefox').build();
     
-    // Set a timeout to prevent the test ending before the browser has started
+    // Set a timeout to prevent the test ending before the browser has started.
     this.timeout(10000);
 
     it('should display text on button click', async () => {
         await driver.get('http://localhost:8001');
+
+        // Take screenshot before the fact.
         await (await driver).takeScreenshot().then(
             function(image, err) {
                 require('fs').writeFile('./test-reports/before.png', image, 'base64', function(err) {
@@ -17,9 +19,21 @@ describe('Web page', function() {
                 });
             }
         );
+
+        // Click the button and check for text.
         await driver.findElement(By.id('button')).click();
         var message = await driver.findElement(By.id('click')).getText();
         expect(message).to.equal('Clickity click!');
+
+        // Take screenshot after the fact.
+        await (await driver).takeScreenshot().then(
+            function(image, err) {
+                require('fs').writeFile('./test-reports/after.png', image, 'base64', function(err) {
+                    console.log(err);
+                });
+            }
+        );
+
     })
 
     // Quit selenium after the test has finished
