@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha tests --reporter mocha-junit-reporter"
+    "test": "mocha tests --reporter mocha-junit-reporter --reporter-options mochaFile=~/junit/test-results.xml"
   },
   "repository": {
     "type": "git",
