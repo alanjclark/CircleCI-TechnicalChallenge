@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "mocha tests --reporter mocha-junit-reporter"
+    "test": "mocha tests"
   },
   "repository": {
     "type": "git",
