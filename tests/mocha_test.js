@@ -12,6 +12,7 @@ describe('Web page', function(){
         await driver.findElement(By.id('button')).click();
         var message = await driver.findElement(By.id('click')).getText();
         expect(message).to.equal('Clicky click!');
+        done();
     })
 
     // Quit selenium after the test has finished
