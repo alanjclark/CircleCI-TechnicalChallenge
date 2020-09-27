@@ -25,6 +25,9 @@ jobs:
           command: node src/app.js
           background: true
       - run:
+          name: Install mocha
+          command: npm install mocha
+      - run:
           name: Run the test
           command: mocha tests
       - store_artifacts:
