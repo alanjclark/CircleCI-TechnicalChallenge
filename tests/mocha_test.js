@@ -7,7 +7,7 @@ describe('Web page', function(){
     // Set a timeout to prevent the test ending before the browser has started
     this.timeout(10000);
 
-    it('should display text on button click', async (done) => {
+    it('should display text on button click', async () => {
         await driver.get('http://localhost:8001');
         await driver.findElement(By.id('button')).click();
         var message = await driver.findElement(By.id('click')).getText();
