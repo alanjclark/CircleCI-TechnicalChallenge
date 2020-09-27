@@ -1,8 +1,8 @@
-const webdriver = require('selenium-webdriver');
+const {Builder, By, Key, until} = require('selenium-webdriver');
 const { expect } = require('chai');
 
 describe('Web page', function(){
-    var driver = new webdriver.Builder().forBrowser('firefox').build();
+    var driver = new Builder().forBrowser('firefox').build();
     
     // Set a timeout to prevent the test ending before the browser has started
     this.timeout(10000);
