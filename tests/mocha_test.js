@@ -12,7 +12,7 @@ describe('Web page', function() {
         await driver.get('http://localhost:8001');
         await (await driver).takeScreenshot().then(
             function(image, err) {
-                require('fs').writeFile('before.png', image, 'base64', function(err) {
+                require('fs').writeFile('./test-reports/before.png', image, 'base64', function(err) {
                     console.log(err);
                 });
             }
