@@ -26,7 +26,10 @@ jobs:
           background: true
       - run:
           name: Run the test
-          command: npm test
+          command: mocha test --reporter mocha-junit-reporter
+          environment:
+            MOCHA_FILE: ~/test-results.xml
+          when: always
       - store_artifacts:
           path: test-reports/
       - store_test_results:
