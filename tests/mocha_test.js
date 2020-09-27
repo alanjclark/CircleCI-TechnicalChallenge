@@ -10,11 +10,12 @@ describe('Web page', function() {
 
     it('should display text on button click', async () => {
         await driver.get('http://localhost:8001');
-        let encodedString = driver.takeScreenshot();
+        let encodedString = (await driver).takeScreenshot;
         fs.writeFileSync('./test-reports/before.png', encodedString, 'base64');
         await driver.findElement(By.id('button')).click();
         var message = await driver.findElement(By.id('click')).getText();
         expect(message).to.equal('Clicky click!');
+        let encodedString = (await driver).takeScreenshot;
         fs.writeFileSync('./test-reports/after.png', encodedString, 'base64');
     })
 
