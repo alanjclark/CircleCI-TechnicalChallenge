@@ -26,7 +26,7 @@ jobs:
           background: true
       - run:
           name: Run the test
-          command: npm tests
+          command: npm test
       - store_artifacts:
           path: test-reports/
       - store_test_results:
