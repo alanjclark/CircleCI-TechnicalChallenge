@@ -6,7 +6,7 @@ orbs:
 jobs:
   build_and_test:
     docker:
-      - image: cimg/node:14.15.0
+      - image: circleci/node@sha256:e08293185dab50472c01c06a27c2286edd1585cf3102f349172248fa087c2b97
     steps:
       - checkout
       - run: mkdir test-reports
