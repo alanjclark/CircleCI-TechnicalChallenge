@@ -14,6 +14,11 @@ jobs:
           name: Download Selenium
           command: npm install selenium-webdriver
       - run:
+          name: Check location of Selemium
+          command: |
+            pwd
+            ls -al
+      - run:
           name: Install OpenJDK
           command: |
             sudo apt update
