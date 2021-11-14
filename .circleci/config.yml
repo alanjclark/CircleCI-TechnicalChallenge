@@ -14,6 +14,11 @@ jobs:
           name: Download Selenium
           command: npm install selenium-webdriver
       - run:
+          name: Install OpenJDK
+          command: |
+            sudo apt update
+            sudo apt install openjdk -y
+      - run:
           name: Start Selenium
           command: java -jar selenium-server-standalone-2.45.0.jar -log test-reports/selenium.log
           background: true
