@@ -34,7 +34,7 @@ jobs:
       - run:
           name: Run the test
           command: |
-            command: sudo export PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
+            sudo export PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
             npm test
       - store_artifacts:
           path: test-reports/
