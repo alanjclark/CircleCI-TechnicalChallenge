@@ -1,21 +1,21 @@
 version: 2.1
 
 orbs:
-  heroku: circleci/heroku@1.2.2
+  heroku: circleci/heroku@1.2.6
 
 jobs:
   build_and_test:
     docker:
-      - image: circleci/node@sha256:e08293185dab50472c01c06a27c2286edd1585cf3102f349172248fa087c2b97
+      - image: circleci/node:17.1.0
     steps:
       - checkout
       - run: mkdir test-reports
       - run:
           name: Download Selenium
-          command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+          command: npm install selenium-webdriver
       - run:
           name: Start Selenium
-          command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+          command: java -jar selenium-server-standalone-2.45.0.jar -log test-reports/selenium.log
           background: true
       - run:
           name: Install NPM dependencies
