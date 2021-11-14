@@ -12,12 +12,7 @@ jobs:
       - run: mkdir test-reports
       - run:
           name: Download Selenium
-          command: npm install selenium-webdriver
-      - run:
-          name: Check location of Selemium
-          command: |
-            pwd
-            ls -al
+          command: npm install selenium-standalone -g
       - run:
           name: Install OpenJDK
           command: |
@@ -25,7 +20,7 @@ jobs:
             sudo apt install openjdk-8-jre -y
       - run:
           name: Start Selenium
-          command: sudo java -jar selenium-server-standalone-2.45.0.jar -log test-reports/selenium.log
+          command: selenium-standalone install && selenium-standalone start
           background: true
       - run:
           name: Install NPM dependencies
