@@ -6,18 +6,10 @@ orbs:
 jobs:
   build_and_test:
     docker:
-      - image: cimg/node:17.1.0
+      - image: cimg/node:17.1.0-browsers
     steps:
       - checkout
       - run: mkdir test-reports
-      - run:
-          name: Download Selenium
-          command: sudo npm install selenium-standalone -g
-      - run:
-          name: Install OpenJDK
-          command: |
-            sudo apt update
-            sudo apt install openjdk-8-jre -y
       - run:
           name: Start Selenium
           command: |
@@ -34,7 +26,6 @@ jobs:
       - run:
           name: Run the test
           command: |
-            sudo export PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
             npm test
       - store_artifacts:
           path: test-reports/
