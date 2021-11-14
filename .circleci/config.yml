@@ -20,7 +20,9 @@ jobs:
             sudo apt install openjdk-8-jre -y
       - run:
           name: Start Selenium
-          command: selenium-standalone install && selenium-standalone start
+          command: |
+            sudo selenium-standalone install && selenium-standalone start
+            sleep 5
           background: true
       - run:
           name: Install NPM dependencies
