@@ -26,6 +26,7 @@ jobs:
       - run:
           name: Run the test
           command: |
+            PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver geckodriver
             npm test
       - store_artifacts:
           path: test-reports/
