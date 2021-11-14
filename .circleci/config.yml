@@ -18,7 +18,9 @@ jobs:
           background: true
       - run:
           name: Install NPM dependencies
-          command: sudo npm install
+          command: |
+            sudo npm install
+            PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
       - run:
           name: Run Node Server
           command: node src/app.js
@@ -26,7 +28,6 @@ jobs:
       - run:
           name: Run the test
           command: |
-            PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
             npm test
       - store_artifacts:
           path: test-reports/
