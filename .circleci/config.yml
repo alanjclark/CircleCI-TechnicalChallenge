@@ -12,7 +12,7 @@ jobs:
       - run: mkdir test-reports
       - run:
           name: Download Selenium
-          command: npm install selenium-standalone -g
+          command: sudo npm install selenium-standalone -g
       - run:
           name: Install OpenJDK
           command: |
