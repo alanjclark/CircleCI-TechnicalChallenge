@@ -14,6 +14,9 @@ jobs:
           name: Download Selenium
           command: sudo npm install selenium-standalone -g
       - run:
+          name: Set gecko path
+          command: export PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
+      - run:
           name: Install OpenJDK
           command: |
             sudo apt update
