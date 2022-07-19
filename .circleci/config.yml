@@ -10,6 +10,7 @@ jobs:
       - image: cimg/node:17.1.0-browsers
     steps:
       - checkout
+      - browser-tools/install-geckodriver
       - browser-tools/install-firefox
       - run: mkdir test-reports
       - run:
