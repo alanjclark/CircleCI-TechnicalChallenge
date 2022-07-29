@@ -12,7 +12,7 @@ jobs:
     steps:
       - checkout
       - browser-tools/install-geckodriver
-      - browser-tools/install-firefox
+      # - browser-tools/install-firefox
       - run: mkdir test-reports
       # - run:
       #     name: Download and start X
