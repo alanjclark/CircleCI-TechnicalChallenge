@@ -1,7 +1,8 @@
 version: 2.1
 
 orbs:
-  heroku: circleci/heroku@1.2.6
+  node: circleci/node@5.0.2
+  # heroku: circleci/heroku@1.2.6
   browser-tools: circleci/browser-tools@1.3.0
 
 jobs:
@@ -13,17 +14,18 @@ jobs:
       - browser-tools/install-geckodriver
       - browser-tools/install-firefox
       - run: mkdir test-reports
-      - run:
-          name: Download and start X
-          command: |
-            sudo apt-get install -y x11vnc
-            x11vnc -forever -nopw
-          background: true
-      - run:
-          name: Install NPM dependencies
-          command: |
-            sudo npm install
-          # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
+      # - run:
+      #     name: Download and start X
+      #     command: |
+      #       sudo apt-get install -y x11vnc
+      #       x11vnc -forever -nopw
+      #     background: true
+      # - run:
+      #     name: Install NPM dependencies
+      #     command: |
+      #       sudo npm install
+      #     # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
+      - node/install-packages
       - run:
           name: Run Node Server
           command: node src/app.js
