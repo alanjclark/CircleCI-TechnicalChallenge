@@ -1,24 +1,28 @@
 {
   "name": "circleci-technicalchallenge",
   "version": "1.0.0",
-  "description": "CircleCI Technical Challenge",
-  "main": "./src/app.js",
-  "directories": {
-    "test": "tests"
-  },
+  "description": "Simple starter package for Redux with React and Babel support",
+  "main": "index.js",
+  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
-    "test": "node tests/app.test.js"
+    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
+    "build": "node ./node_modules/webpack/bin/webpack.js",
+    "test:watch": "npm run test -- --watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alanjclark/CircleCI-TechnicalChallenge.git"
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "css-loader": "^0.28.4",
+    "eslint-config-rallycoding": "^3.2.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
   },
-  "author": "Al Clark",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alanjclark/CircleCI-TechnicalChallenge/issues"
-  },
-  "homepage": "https://github.com/alanjclark/CircleCI-TechnicalChallenge#readme",
   "dependencies": {
     "antd": "^2.12.1",
     "aws-sdk": "^2.118.0",
