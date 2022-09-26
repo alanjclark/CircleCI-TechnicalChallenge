@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Install NPM dependencies
           command: |
-            sudo npm install --force
+            sudo npm install --legacy-peer-deps
       #     # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
       # - node/install-packages
       - run:
