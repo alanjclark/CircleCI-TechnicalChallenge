@@ -20,12 +20,12 @@ jobs:
       #       sudo apt-get install -y x11vnc
       #       x11vnc -forever -nopw
       #     background: true
-      # - run:
-      #     name: Install NPM dependencies
-      #     command: |
-      #       sudo npm install
+      - run:
+          name: Install NPM dependencies
+          command: |
+            sudo npm install --force
       #     # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
-      - node/install-packages
+      # - node/install-packages
       - run:
           name: Run Node Server
           command: node src/app.js
