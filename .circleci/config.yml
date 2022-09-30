@@ -2,64 +2,39 @@ version: 2.1
 
 orbs:
   node: circleci/node@5.0.2
-  # heroku: circleci/heroku@1.2.6
-  # browser-tools: circleci/browser-tools@1.3.0
-
-executors:
-  docker: # Docker using the Base Convenience Image
-    docker:
-      - image: cimg/base:stable
-  linux: # a Linux VM running Ubuntu 20.04
-    machine:
-      image: ubuntu-2004:2022.07.1
+  win: circleci/windows@5.0
 
 jobs:
-  build_and_test:
+  build:
     parameters:
-      os:
-        type: executor
       node-version:
         type: string
-    executor: << parameters.os >>
+    executor: 
+      name: win/default
+      shell: powershell.exe
     steps:
       - checkout
-      - node/install:
-          node-version: << parameters.node-version >>
-          install-yarn: true
-      # - browser-tools/install-geckodriver
-      # - browser-tools/install-firefox
-      # - run: mkdir test-reports
-      # - run:
-      #     name: Download and start X
-      #     command: |
-      #       sudo apt-get install -y x11vnc
-      #       x11vnc -forever -nopw
-      #     background: true
+      # - node/install:
+      #     node-version: << parameters.node-version >>
+      #     install-yarn: true
+
       - run:
-          name: Install NPM dependencies
+          shell: powershell.exe
+          name: install node
           command: |
-            npm install --legacy-peer-deps --verbose
-      #     # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
-      # - node/install-packages
-      # - run:
-      #     name: Run Node Server
-      #     command: node src/app.js
-      #     background: true
-      # - run:
-      #     name: Run the test
-      #     command: |
-      #       npm test
-      # - store_artifacts:
-      #     path: test-reports/
-      # - store_test_results:
-      #     path: test-reports/
-  no_output_timeout: 30m
+            nvm install << parameters.node-version >>
+            nvm use << parameters.node-version >>
+      - run:
+          shell: powershell.exe
+          name: npm install
+          command: npm install --legacy-peer-deps --verbose
+
 
 workflows:
-  build_test:
+  version: 2
+  build-deploy:
     jobs:
-      - build_and_test:
+      - build:
           matrix:
             parameters:
-              os: [docker, linux]
               node-version: ["14.18.0", "14.18.2", "14.19.2", "14.20.1", "15.14.0", "16.17.1", "17.9.1", "18.9.1"]
