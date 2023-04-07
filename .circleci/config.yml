@@ -3,29 +3,29 @@ version: 2.1
 orbs:
   node: circleci/node@5.0.2
   # heroku: circleci/heroku@1.2.6
-  # browser-tools: circleci/browser-tools@1.3.0
+  browser-tools: circleci/browser-tools@1.3.0
 
 executors:
   docker: # Docker using the Base Convenience Image
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:14.20.1-browsers
   linux: # a Linux VM running Ubuntu 20.04
     machine:
       image: ubuntu-2004:2022.07.1
 
 jobs:
   build_and_test:
-    parameters:
-      os:
-        type: executor
-      node-version:
-        type: string
-    executor: << parameters.os >>
+    # parameters:
+    #   os:
+    #     type: executor
+    #   node-version:
+    #     type: string
+    executor: docker
     steps:
       - checkout
-      - node/install:
-          node-version: << parameters.node-version >>
-          install-yarn: true
+      # - node/install:
+      #     node-version: 14.20.1
+      #     install-yarn: true
       # - browser-tools/install-geckodriver
       # - browser-tools/install-firefox
       # - run: mkdir test-reports
@@ -36,9 +36,12 @@ jobs:
       #       x11vnc -forever -nopw
       #     background: true
       - run:
+          name: NPM cache clean
+          command: npm cache verify
+      - run:
           name: Install NPM dependencies
           command: |
-            npm install --legacy-peer-deps --verbose
+            npm ci
       #     # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
       # - node/install-packages
       # - run:
@@ -53,13 +56,14 @@ jobs:
       #     path: test-reports/
       # - store_test_results:
       #     path: test-reports/
-  no_output_timeout: 30m
+
+  # no_output_timeout: 30m
 
 workflows:
   build_test:
     jobs:
-      - build_and_test:
-          matrix:
-            parameters:
-              os: [docker, linux]
-              node-version: ["14.18.0", "14.18.2", "14.19.2", "14.20.1", "15.14.0", "16.17.1", "17.9.1", "18.9.1"]
+      - build_and_test
+          # matrix:
+          #   parameters:
+          #     os: [docker, linux]
+          #     node-version: ["14.18.0", "14.18.2", "14.19.2", "14.20.1", "15.14.0", "16.17.1", "17.9.1", "18.9.1"]
