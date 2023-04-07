@@ -40,7 +40,6 @@ jobs:
           name: NPM cache clean
           command: npm cache verify
       - run:
-          shell: powershell.exe
           name: install node
           command: |
             npm ci
