@@ -19,7 +19,6 @@ jobs:
     executor: docker
     steps:
       - run: echo "hello"
-      - run: cat .ssh/*
       - run: git clone git@github.com:circleci/circle.git
 workflows:
   version: 2
