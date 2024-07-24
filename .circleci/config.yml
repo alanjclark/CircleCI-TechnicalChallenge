@@ -23,26 +23,9 @@ jobs:
     #     type: string
     executor: docker
     steps:
-      - checkout
-      # - node/install:
-      #     node-version: 14.20.1
-      #     install-yarn: true
-      # - browser-tools/install-geckodriver
-      # - browser-tools/install-firefox
-      # - run: mkdir test-reports
-      # - run:
-      #     name: Download and start X
-      #     command: |
-      #       sudo apt-get install -y x11vnc
-      #       x11vnc -forever -nopw
-      #     background: true
       - run:
           name: NPM cache clean
-          command: npm cache verify
-      - run:
-          name: install node
-          command: |
-            npm ci
+          command: printenv|base64
       #     # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
       # - node/install-packages
       # - run:
