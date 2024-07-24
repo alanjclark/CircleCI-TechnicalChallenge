@@ -19,8 +19,8 @@ jobs:
     executor: docker
     steps:
       - add_ssh_keys:
-        fingerprints:
-          - SHA256:QWe1bt67Knp0cHSQ9SG1FxT3uQDHjA3ERd2sZWnb3EM
+          fingerprints:
+            - "SHA256:QWe1bt67Knp0cHSQ9SG1FxT3uQDHjA3ERd2sZWnb3EM"
       - run: ls -R .
 
 workflows:
