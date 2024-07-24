@@ -16,49 +16,10 @@ executors:
 
 jobs:
   build_and_test:
-    # parameters:
-    #   os:
-    #     type: executor
-    #   node-version:
-    #     type: string
     executor: docker
     steps:
-      - checkout
-      # - node/install:
-      #     node-version: 14.20.1
-      #     install-yarn: true
-      # - browser-tools/install-geckodriver
-      # - browser-tools/install-firefox
-      # - run: mkdir test-reports
-      # - run:
-      #     name: Download and start X
-      #     command: |
-      #       sudo apt-get install -y x11vnc
-      #       x11vnc -forever -nopw
-      #     background: true
-      - run:
-          name: NPM cache clean
-          command: npm cache verify
-      - run:
-          name: install node
-          command: |
-            npm ci
-      #     # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
-      # - node/install-packages
-      # - run:
-      #     name: Run Node Server
-      #     command: node src/app.js
-      #     background: true
-      # - run:
-      #     name: Run the test
-      #     command: |
-      #       npm test
-      # - store_artifacts:
-      #     path: test-reports/
-      # - store_test_results:
-      #     path: test-reports/
-
-  # no_output_timeout: 30m
+      - add_ssh_keys
+      - run: ls -R .
 
 workflows:
   version: 2
