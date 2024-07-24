@@ -39,6 +39,7 @@ jobs:
       - run:
           name: NPM cache clean
           command: npm cache verify
+      - run: echo "hello"
       - run:
           name: install node
           command: |
