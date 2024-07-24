@@ -25,7 +25,3 @@ workflows:
   build-deploy:
     jobs:
       - build_and_test
-          # matrix:
-          #   parameters:
-          #     os: [docker, linux]
-          #     node-version: ["14.18.0", "14.18.2", "14.19.2", "14.20.1", "15.14.0", "16.17.1", "17.9.1", "18.9.1"]
