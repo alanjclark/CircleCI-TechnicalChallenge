@@ -14,6 +14,7 @@ jobs:
       - run: git clone https://github.com/circleci/circleci-docs.git
       - run: git config --global push.autoSetupRemote true
       - run: cd circleci-docs
+      - run: pwd
       - run: git checkout -b hello-from-somewhere
       - run: git push
       #     # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
