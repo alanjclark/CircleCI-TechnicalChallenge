@@ -11,11 +11,9 @@ jobs:
       - add_ssh_keys
       - run: mkdir /home/circleci/.ssh
       - run: ssh-keyscan -H github.com > ~/.ssh/known_hosts
-      - run: git clone https://github.com/circleci/circleci-docs.git
+      - run: git clone git@github.com:circleci/admin-tooling-terraform.git
       - run: git config --global push.autoSetupRemote true
-      - run: cd circleci-docs
-      - run: pwd
-      - run: git checkout -b hello-from-somewhere
+      - run: cd admin-tooling-terraforms;git checkout -b hello-from-somewhere
       - run: git push
       #     # PATH=$PATH:/usr/local/lib/node_modules/selenium-standalone/.selenium/geckodriver/latest-x64/geckodriver
       # - node/install-packages
