@@ -9,6 +9,7 @@ jobs:
     executor: docker
     steps:
       - add_ssh_keys
+      - run: mkdir /home/circleci/.ssh
       - run: ssh-keyscan -H github.com > ~/.ssh/known_hosts
       - run: git clone git@github.com:circleci/circleci-docs.git
       - run: git config --global push.autoSetupRemote true
